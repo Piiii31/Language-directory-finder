@@ -85,7 +85,7 @@ To build the desktop application as an executable, follow these steps:
 
 ## Download
 
-You can download the latest version of the Language Directory Finder application [here]([https://drive.google.com/uc?id=YOUR_FILE_ID&export=download](https://drive.google.com/drive/folders/1jwNhzdUZk_6UuO1Q_8pobv7zXpDpz1ty?usp=sharing)).
+You can download the latest version of the Language Directory Finder application [Download Setup.exe](https://drive.google.com/drive/folders/1jwNhzdUZk_6UuO1Q_8pobv7zXpDpz1ty?usp=sharing)
 
 ## Notes
 
