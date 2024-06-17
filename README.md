@@ -83,6 +83,10 @@ To build the desktop application as an executable, follow these steps:
 
     Navigate to the `dist` directory and run the generated `.exe` file.
 
+## Download
+
+You can download the latest version of the Language Directory Finder application [here]([https://drive.google.com/uc?id=YOUR_FILE_ID&export=download](https://drive.google.com/drive/folders/1jwNhzdUZk_6UuO1Q_8pobv7zXpDpz1ty?usp=sharing)).
+
 ## Notes
 
 - Ensure that all the paths used in your code are relative paths, especially when dealing with resources like HTML, CSS, and image files. This will help in packaging everything correctly.
