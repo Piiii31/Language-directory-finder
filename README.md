@@ -1,6 +1,5 @@
 # Language-directory-finder
 
-# Language-directory-finder
 
 # Directory Manager
 
