@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Directories</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Language Directories</h1>
+            <div id="drive-selection">
+                <label for="drives">Available Drives:</label>
+                <select id="drives"></select>
+                <button onclick="selectDrive()">Select Drive</button>
+            </div>
+        </div>
+        <div id="content">
+            <h2>Directories:</h2>
+            <ul id="directories"></ul>
+        </div>
+    </div>
+
+    <div id="language-modal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-times" onclick="document.getElementById('language-modal').style.display = 'none';"></i>
+            <h2>Select Language</h2>
+
+            <div id="language-options" class="language-grid">
+
+                <div class="language-option" onclick="selectLanguage('React')">
+
+                    <img src="assets/react-logo.png" alt="React">
+                    <p>React</p>
+                </div>
+                <div class="language-option" onclick="selectLanguage('Python')">
+                    <img src="assets/python-logo.png" alt="Python">
+                    <p>Python</p>
+                </div>
+                <div class="language-option" onclick="selectLanguage('JavaScript')">
+                    <img src="assets/javascript-logo.png" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+
+                <div class="custom-language-option" onclick="selectLanguage('Custom')">
+                    <i class="fas fa-plus"></i>
+                    <p>Custom</p>
+                </div>
+                <!-- Add more languages as needed -->
+            </div>
+        </div>
+
+    </div>
+
+    <div id="custom-language-modal" class="modal">
+        <div class="modal-content">
+            <h2>Add Custom Language</h2>
+            <div class="upload-image">
+                <label for="language-image">
+                    <div class="upload-image-circle">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </label>
+                <input type="file" id="language-image" style="display: none;">
+            </div>
+            <input type="text" id="language-name" placeholder="Enter the name of the language">
+            <button onclick="addCustomLanguage()">Submit</button>
+        </div>
+
+    </div>
+
+    <div id="comment-modal" class="modal">
+        <div class="modal-content">
+            <h2>Add Comment</h2>
+            <textarea id="comment-text" rows="4" cols="50"></textarea>
+            <button onclick="saveComment()">Save Comment</button>
+        </div>
+    </div>
+
+    <script src="/eel.js"></script>
+    <script src="main.js"></script>
+<script>
+    // Load the custom languages when the page loads
+    window.onload = function() {
+        var customLanguages = JSON.parse(localStorage.getItem('customLanguages')) || [];
+        var languageOptions = document.getElementById('language-options');
+
+        // Remove the custom language option from the DOM
+        var customLanguageOption = document.querySelector('.custom-language-option');
+        if (customLanguageOption) {
+            languageOptions.removeChild(customLanguageOption);
+        }
+
+        customLanguages.forEach(function(language) {
+            var div = document.createElement('div');
+            div.className = 'language-option';
+            div.onclick = function() { selectLanguage(language); };
+
+            // Add a long press event listener to the language option
+            div.addEventListener('mousedown', function(e) {
+                // Show the trash icon
+                document.getElementById('trash-icon').style.display = 'block';
+
+                // Move the trash icon to the mouse position
+                document.getElementById('trash-icon').style.left = e.pageX + 'px';
+                document.getElementById('trash-icon').style.top = e.pageY + 'px';
+
+                // Start checking for collision
+                var intervalId = setInterval(function() {
+                    if (isColliding(document.getElementById('trash-icon'), e.target)) {
+                        // If the trash icon and the language option are colliding, delete the language
+                        deleteLanguage(e.target.dataset.language);
+
+                        // Stop checking for collision
+                        clearInterval(intervalId);
+                    }
+                }, 100);
+            });
+
+            var img = document.createElement('img');
+            img.src = 'assets/' + language + '-logo.png';
+            img.alt = language;
+            div.appendChild(img);
+            var p = document.createElement('p');
+            p.textContent = language;
+            div.appendChild(p);
+            languageOptions.appendChild(div);
+        });
+
+        // Append the custom language option to the DOM
+        languageOptions.appendChild(customLanguageOption);
+    };
+</script>
+</body>
+</html>
