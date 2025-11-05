@@ -1,0 +1,8 @@
+{
+  "frontend": ["Eel","Bottle"],
+  "backend": ["Python"],
+  
+  "others": ["PyInstaller","Desktop"]
+}
+
+

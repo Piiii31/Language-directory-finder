@@ -1,0 +1,1 @@
+**Language Directory Finder** is a desktop application that allows users to browse directories, add comments, mark favorites, and manage custom languages with associated images.

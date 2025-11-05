@@ -1,0 +1,5 @@
+- Browse and manage directories.
+- Add, edit, and view comments for directories.
+- Mark directories as favorites.
+- Add custom languages with associated images.
+- Responsive user interface with periodic updates.
